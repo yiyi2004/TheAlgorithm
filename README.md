@@ -9,4 +9,4 @@ TheAlgorithm is a place to practise algorithm.
 - https://github.com/arnauddri/algorithms
 - https://github.com/ua-nick/Data-Structures-and-Algorithms
 - https://github.com/halfrost/LeetCode-Go
-> You need add some basic information
+- https://github.com/algorithmzuo/class-notes

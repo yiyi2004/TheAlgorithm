@@ -1,0 +1,3 @@
+package recursion
+
+func f() {}
