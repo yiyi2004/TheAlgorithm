@@ -8,6 +8,8 @@ func main() {
 	fmt.Println(res)
 }
 
+// 我感觉现在好难受啊，
+
 func spiralOrder(matrix [][]int) []int {
 	top, bottom, left, right := 0, len(matrix)-1, 0, len(matrix[0])-1
 	indexi, indexj := 0, 0

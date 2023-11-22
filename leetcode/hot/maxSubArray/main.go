@@ -4,8 +4,26 @@ import "fmt"
 
 func main() {
 	nums := []int{-2, 1, -3, 4, -1, 2, 1, -5, 4}
-	res := maxSubArray2(nums)
+	res := maxSubArray(nums)
 	fmt.Println(res)
+}
+
+func maxSubArray(nums []int) int {
+	if len(nums) == 1 {
+		return nums[0]
+	}
+	maxSum := 0
+
+	for i := 1; i < len(nums); i++ {
+		if nums[i]+nums[i-1] > nums[i] {
+			nums[i] = nums[i] + nums[i-1]
+		}
+		if nums[i] > maxSum {
+			maxSum = nums[i]
+		}
+	}
+
+	return maxSum
 }
 
 // 递归实现
@@ -45,17 +63,17 @@ func main() {
 //	return max
 //}
 
-func maxSubArray2(nums []int) int {
-	max := nums[0]
-	for i := 1; i < len(nums); i++ {
-		if nums[i]+nums[i-1] > nums[i] {
-			nums[i] = nums[i] + nums[i-1]
-		}
-		if max < nums[i] {
-			max = nums[i]
-		}
-	}
-	return max
-}
+//func maxSubArray2(nums []int) int {
+//	max := nums[0]
+//	for i := 1; i < len(nums); i++ {
+//		if nums[i]+nums[i-1] > nums[i] {
+//			nums[i] = nums[i] + nums[i-1]
+//		}
+//		if max < nums[i] {
+//			max = nums[i]
+//		}
+//	}
+//	return max
+//}
 
 // 分治
