@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
 	n1 := new(TreeNode)
@@ -55,25 +57,43 @@ type TreeNode struct {
 //	type info struct {
 //		pathNum int
 //	}
+//func pathSum(root *TreeNode, targetSum int) int {
+//	if root == nil {
+//		return 0
+//	}
+//	res := 0
+//	res += rootSum(root, targetSum, 0)
+//	res += pathSum(root.Left, targetSum)
+//	res += pathSum(root.Right, targetSum)
+//	return res
+//}
+//
+//func rootSum(root *TreeNode, targetSum int, preVal int) (res int) {
+//	if root == nil {
+//		return
+//	}
+//	if root.Val+preVal == targetSum {
+//		res++
+//	}
+//	res += rootSum(root.Left, targetSum, preVal+root.Val)
+//	res += rootSum(root.Right, targetSum, preVal+root.Val)
+//	return res
+//}
+
 func pathSum(root *TreeNode, targetSum int) int {
 	if root == nil {
 		return 0
 	}
-	res := 0
-	res += rootSum(root, targetSum, 0)
-	res += pathSum(root.Left, targetSum)
-	res += pathSum(root.Right, targetSum)
-	return res
+	return rootSum(root, targetSum, 0) + pathSum(root.Left, targetSum) + pathSum(root.Right, targetSum)
 }
 
-func rootSum(root *TreeNode, targetSum int, preVal int) (res int) {
+func rootSum(root *TreeNode, targetSum int, preVal int) int {
 	if root == nil {
-		return
+		return 0
 	}
-	if root.Val+preVal == targetSum {
+	res := 0
+	if preVal+root.Val == targetSum {
 		res++
 	}
-	res += rootSum(root.Left, targetSum, preVal+root.Val)
-	res += rootSum(root.Right, targetSum, preVal+root.Val)
-	return res
+	return res + rootSum(root.Left, targetSum, preVal+root.Val) + rootSum(root.Right, targetSum, preVal+root.Val)
 }
