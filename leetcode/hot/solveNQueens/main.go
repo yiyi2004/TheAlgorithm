@@ -85,5 +85,4 @@ func checkSingle(res []string, row, col int, n int) (flag bool) {
 	return true
 }
 
-// 斜线是有问题的
-// 你这样做肯定是有问题的
+// 时间复杂度太高

@@ -56,11 +56,37 @@ func process(grid [][]byte) (res int) {
 		for j := 0; j < len(grid[0]); j++ {
 			if grid[i][j] == '1' {
 				res++
-				process(grid)
+				change(grid, i, j)
 			} else {
 				continue
 			}
 		}
 	}
 	return res
+}
+
+func change(grid [][]byte, i, j int) {
+	if grid[i][j] == '0' || grid[i][j] == '2' {
+		return
+	}
+	grid[i][j] = '2'
+	if inGrid(grid, i, j+1) {
+		change(grid, i, j+1)
+	}
+	if inGrid(grid, i, j-1) {
+		change(grid, i, j-1)
+	}
+	if inGrid(grid, i+1, j) {
+		change(grid, i+1, j)
+	}
+	if inGrid(grid, i-1, j) {
+		change(grid, i-1, j)
+	}
+}
+
+func inGrid(grid [][]byte, i, j int) bool {
+	if i >= 0 && i < len(grid) && j >= 0 && j < len(grid[0]) {
+		return true
+	}
+	return false
 }
