@@ -75,3 +75,21 @@ func largestRectangleArea(heights []int) int {
 	}
 	return max
 }
+
+//
+//func largestRectangleArea(heights []int) int {
+//	heights = append([]int{0}, append(heights, 0)...)
+//	stk := make([]int, 0)
+//
+//}
+//
+//func findMax(arr []int) int {
+//	mx := arr[0]
+//	for i := 1; i < len(arr); i++ {
+//		if arr[i] > mx {
+//			mx = arr[i]
+//		}
+//
+//	}
+//	return mx
+//}
