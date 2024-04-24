@@ -114,3 +114,21 @@ func max(a, b int) int {
 	}
 	return b
 }
+
+func maxSlidingWindow1(nums []int, k int) []int {
+	res := make([]int, 0)
+	queue := make([]int, 0, len(nums))
+	for i := 0; i < len(nums); i++ {
+		for len(queue) > 0 && nums[queue[len(queue)-1]] <= nums[i] {
+			queue = queue[:len(queue)-1]
+		}
+		queue = append(queue, i)
+		if i-queue[0] >= k {
+			queue = queue[1:]
+		}
+		if i >= k-1 && len(queue) > 0 {
+			res = append(res, nums[queue[0]])
+		}
+	}
+	return res
+}

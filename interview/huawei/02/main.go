@@ -119,14 +119,12 @@ func main() {
 			no.children = make([]string, 0)
 			rows[val] = no
 		} else {
-
 			if pro == 0 {
 				src.hardNum += proNum
 			} else {
-				v.midNum += proNum
+				src.midNum += proNum
 			}
 		}
-
 	}
 	for _, no := range rows {
 		if no.parent != "*" {
@@ -140,8 +138,10 @@ func main() {
 	}
 	res := 0
 	for _, no := range rows {
-		if no.total > throld {
-			res++
+		if no.parent == "*" {
+			if no.total > throld {
+				res++
+			}
 		}
 	}
 	fmt.Println(res)
